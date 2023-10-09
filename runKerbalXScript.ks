@@ -8,7 +8,7 @@ function main {
         
         ascentStaging().
     }
-    // circularizationBurn().
+    circularizationBurn().
     // spacecraftConfigManeuver().
     // munarTransferBurn().
     // munarOrbitalBurn().
@@ -59,5 +59,24 @@ function ascentStaging {
         global oldThrust is ship:availablethrust.
     }
 }
+
+function circularizationBurn {
+    // wait until time until apoapsis is 1/2 probable burn for circularization
+    lock steering to PROGRADE.
+    if (SHIP:OBT:ETA:APOAPSIS < 120) {
+        // burn, and stage, until periapsis is 92km 
+        until periapsis > 90000 {
+            if ship:availableThrust = 0 {
+                stageRocket("Rocket"). wait 1.
+                    // abortSystemMonitor().
+                    if ship:availableThrust > 0 { 
+                        break.
+                    }
+            }
+        }
+    }
+    
+}
+
 
 main().
