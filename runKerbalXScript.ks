@@ -3,7 +3,7 @@ function main {
     launchStart().
     print "Lift Off!".
     ascentGuidance().
-    until apoapsis > 90000 {
+    until apoapsis > 95000 {
         PRINT "Monitoring Ascent Staging...".
         
         ascentStaging().
