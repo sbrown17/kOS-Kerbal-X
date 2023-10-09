@@ -59,3 +59,5 @@ function ascentStaging {
         global oldThrust is ship:availablethrust.
     }
 }
+
+main().
